@@ -22,7 +22,7 @@
       --primary-light: #e0f2fe;
       --border-color: #cbd5e1;
       --accent: #d97706;
-      --warning-bg: #fffbebf8;
+      --warning-bg: #fffbeb;
       --warning-border: #fef3c7;
       --warning-text: #92400e;
       --focus-ring: #0284c7;
@@ -51,13 +51,11 @@
       padding: var(--space-md);
     }
 
-    /* ACCESSIBILITY: VISIBLE FOCUS INDICATORS */
     *:focus-visible {
       outline: 3px solid var(--focus-ring);
       outline-offset: 3px;
     }
 
-    /* SKIP LINK FOR KEYBOARD USERS */
     .skip-link {
       position: absolute;
       top: -40px;
@@ -75,7 +73,6 @@
       top: 0;
     }
 
-    /* MAIN CONTAINER - SINGLE PANE CENTERED LAYOUT */
     .container {
       max-width: 860px;
       margin: 0 auto;
@@ -136,7 +133,6 @@
       background-color: var(--bg-color);
     }
 
-    /* GRAPH CONTAINER & CANVAS WRAPPER */
     .graph-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -157,7 +153,6 @@
       overflow: hidden;
     }
 
-    /* Direct Image & Vector Fallback */
     .graph-img-container {
       position: relative;
       width: 100%;
@@ -170,17 +165,6 @@
       display: block;
     }
 
-    /* SVG Overlay Layer */
-    .interactive-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
-
-    /* Interactive Marker Handle */
     .curve-handle {
       position: absolute;
       width: 24px;
@@ -200,7 +184,6 @@
       transform: scale(1.2);
     }
 
-    /* Floating Tooltip Callout */
     .handle-callout {
       position: absolute;
       bottom: 30px;
@@ -227,7 +210,6 @@
       border-color: #0f172a transparent transparent transparent;
     }
 
-    /* CONTROLS SECTION */
     .controls-panel {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -276,7 +258,6 @@
       cursor: pointer;
     }
 
-    /* OUT OF BOUNDS WARNING BANNER */
     .warning-banner {
       background-color: var(--warning-bg);
       border: 1px solid var(--warning-border);
@@ -288,7 +269,6 @@
       display: none;
     }
 
-    /* READOUT RESULTS CARDS */
     .readout-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -319,7 +299,6 @@
       color: var(--primary);
     }
 
-    /* LAB CHECKER FORM */
     .lab-check-card {
       background-color: var(--card-bg);
       border: 1px solid var(--border-color);
@@ -355,7 +334,6 @@
       font-size: 1rem;
     }
 
-    /* ACCESSIBLE MODAL DIALOG */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -392,7 +370,6 @@
       gap: var(--space-md);
     }
 
-    /* UTILITY ACCESSIBILITY CLASSES */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -408,15 +385,11 @@
 </head>
 <body>
 
-  <!-- KEYBOARD SKIP LINK -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- ARIA LIVE ANNOUNCER FOR SCREEN READERS -->
   <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
 
   <div class="container" id="main-content">
     
-    <!-- HEADER -->
     <header>
       <h1>Stomatal Index vs Atmospheric CO<sub>2</sub> Calibration</h1>
       <p class="subtitle">Interactive paleoclimate estimation tool for Environmental Science Lab</p>
@@ -430,11 +403,9 @@
       </div>
     </header>
 
-    <!-- GRAPH CARD (FEATURED TOP PANE) -->
     <main class="graph-card">
       <div class="graph-wrapper" id="graph-container" tabindex="0" role="region" aria-label="Stomatal Index versus Atmospheric CO2 Graph Curve">
         <div class="graph-img-container">
-          <!-- Main Uploaded Image with Auto-Fallback -->
           <img 
             src="./images/stomatal index CO2 graph.png" 
             alt="Calibration curve graph showing Stomatal Index percentage on Y-axis (5% to 15%) versus Atmospheric CO2 parts per million on X-axis (250 to 850 ppm)." 
@@ -442,15 +413,12 @@
             id="graph-img"
             onerror="this.onerror=null; this.src='./stomatal index CO2 graph.png';"
           />
-          
-          <!-- Interactive Overlaid Point Handle -->
           <div id="curve-handle" class="curve-handle" role="slider" aria-label="Graph Curve Indicator" aria-valuemin="6.5" aria-valuemax="13.5" aria-valuenow="10.0" aria-valuetext="Stomatal Index: 10.0%, CO2: 345 ppm">
             <div id="handle-callout" class="handle-callout">SI: 10.0% | CO₂: 345 ppm</div>
           </div>
         </div>
       </div>
 
-      <!-- READOUT DISPLAY CARDS -->
       <div class="readout-grid">
         <div class="readout-card">
           <span class="title">Selected Stomatal Index (SI)</span>
@@ -463,7 +431,6 @@
       </div>
     </main>
 
-    <!-- CONTROLS PANEL -->
     <section class="controls-panel" aria-labelledby="controls-heading">
       <h2 id="controls-heading" class="sr-only">Graph Controls</h2>
       
@@ -484,13 +451,11 @@
         <p id="slider-help" class="sr-only">Use left and right arrow keys to adjust Stomatal Index between 6.5% and 13.5%</p>
       </div>
 
-      <!-- OUT OF BOUNDS NOTICE BANNER -->
       <div id="warning-banner" class="warning-banner" role="alert">
         ⚠️ <strong>Data Limit:</strong> Stomatal Index values below 6.5% exceed the calibrated experimental dataset limit (Max ~850 ppm CO<sub>2</sub>). Estimates cannot be extrapolated beyond these data points.
       </div>
     </section>
 
-    <!-- LAB CHECKER TOOL -->
     <section class="lab-check-card" aria-labelledby="lab-check-heading">
       <h2 id="lab-check-heading" style="font-size: 1.2rem; margin-bottom: var(--space-md);">🧪 Check Your Lab Calculations</h2>
       <form id="lab-form">
@@ -507,7 +472,6 @@
 
   </div>
 
-  <!-- INSTRUCTIONS MODAL -->
   <div id="modal-instructions" class="modal-overlay" role="dialog" aria-labelledby="inst-title" aria-modal="true">
     <div class="modal-content">
       <h2 id="inst-title">Lab Instructions: Reading CO<sub>2</sub> Estimates</h2>
@@ -521,7 +485,6 @@
     </div>
   </div>
 
-  <!-- ACCESSIBILITY CHECKLIST MODAL -->
   <div id="modal-checklist" class="modal-overlay" role="dialog" aria-labelledby="check-title" aria-modal="true">
     <div class="modal-content">
       <h2 id="check-title">WCAG 2.2 Level AA Testing Checklist</h2>
@@ -562,7 +525,6 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // DOM ELEMENTS
       const slider = document.getElementById('si-slider');
       const sliderValDisplay = document.getElementById('slider-val-display');
       const readoutSi = document.getElementById('readout-si');
@@ -575,41 +537,31 @@
       const inputUserSi = document.getElementById('input-user-si');
       const labResult = document.getElementById('lab-result');
 
-      // MATHEMATICAL MODEL: Inverse relationship matching calibration curve
-      // Capped between 280 ppm (at SI 13.5%) and 850 ppm (at SI 6.5%)
       function calculateCO2(si) {
         if (si <= 6.5) return 850;
         if (si >= 13.5) return 280;
         
-        // Power-law inverse model calibrated to visual axes
         const co2 = Math.round(280 + Math.pow((13.5 - si) / 7.0, 1.45) * (850 - 280));
         return Math.min(850, Math.max(280, co2));
       }
 
-      // MAP STOMATAL INDEX TO VISUAL % COORDINATES ON GRAPH IMAGE
       function getHandlePosition(si) {
-        // Y-Axis % Mapping (SI values 6.5% to 13.5%)
         const clampedSI = Math.min(13.5, Math.max(6.5, si));
         const yPct = 85 - ((clampedSI - 6.5) / (13.5 - 6.5)) * 68;
-
-        // X-Axis % Mapping (Corresponding CO2 ppm values 280 to 850 ppm)
         const co2 = calculateCO2(clampedSI);
         const xPct = 12 + ((co2 - 250) / (850 - 250)) * 76;
 
         return { x: xPct, y: yPct };
       }
 
-      // UPDATE UI VALUES & MARKER POSITION
       function updateApp(siValue, announce = false) {
         const si = parseFloat(siValue);
         const co2 = calculateCO2(si);
 
-        // Update Text Displays
         sliderValDisplay.textContent = `${si.toFixed(1)}%`;
         readoutSi.textContent = `${si.toFixed(1)}%`;
         readoutCo2.textContent = `${co2} ppm`;
 
-        // Update Handle Position on Overlay
         const pos = getHandlePosition(si);
         handle.style.left = `${pos.x}%`;
         handle.style.top = `${pos.y}%`;
@@ -617,20 +569,17 @@
         handle.setAttribute('aria-valuetext', `Stomatal Index: ${si.toFixed(1)}%, CO2: ${co2} ppm`);
         handleCallout.textContent = `SI: ${si.toFixed(1)}% | CO₂: ${co2} ppm`;
 
-        // Out-of-bounds warning check
         if (si <= 6.5) {
           warningBanner.style.display = 'block';
         } else {
           warningBanner.style.display = 'none';
         }
 
-        // Screen reader announcement
         if (announce) {
           srAnnouncer.textContent = `Stomatal Index set to ${si.toFixed(1)} percent. Estimated atmospheric CO2 is ${co2} parts per million.`;
         }
       }
 
-      // SLIDER EVENT LISTENERS
       slider.addEventListener('input', (e) => {
         updateApp(e.target.value, false);
       });
@@ -639,7 +588,6 @@
         updateApp(e.target.value, true);
       });
 
-      // LAB CHECKER FORM SUBMISSION
       labForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const userSi = parseFloat(inputUserSi.value);
@@ -656,12 +604,10 @@
           labResult.innerHTML = `✅ A Stomatal Index of <strong>${userSi.toFixed(1)}%</strong> corresponds to an estimated atmospheric CO<sub>2</sub> concentration of <strong>${estimatedCo2} ppm</strong>.`;
         }
 
-        // Sync main graph slider to entered lab value
         slider.value = Math.min(13.5, Math.max(6.5, userSi));
         updateApp(slider.value, true);
       });
 
-      // MODAL CONTROLS
       const btnInstructions = document.getElementById('btn-instructions');
       const btnChecklist = document.getElementById('btn-checklist');
       const modalInstructions = document.getElementById('modal-instructions');
@@ -678,7 +624,6 @@
         });
       });
 
-      // INITIALIZE
       updateApp(10.0, false);
     });
   </script>
