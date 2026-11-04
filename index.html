@@ -87,10 +87,15 @@
             max-width: 80rem;
             margin: 0 auto;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
             gap: 1rem;
+        }
+
+        .header-title {
+            text-align: center;
         }
 
         .badge-tag {
@@ -167,14 +172,14 @@
             padding: 1.5rem;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: minmax(0, 1fr);
             gap: 1.5rem;
         }
 
-        @media (min-width: 1024px) {
-            main {
-                grid-template-columns: 4fr 5fr 3fr;
-            }
+        /* Single-pane layout: stack each section vertically at every screen size. */
+        main {
+            grid-template-columns: minmax(0, 1fr);
+            max-width: 64rem;
         }
 
         /* Cards */
