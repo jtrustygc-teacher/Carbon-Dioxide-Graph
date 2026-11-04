@@ -406,13 +406,86 @@
     <main class="graph-card">
       <div class="graph-wrapper" id="graph-container" tabindex="0" role="region" aria-label="Stomatal Index versus Atmospheric CO2 Graph Curve">
         <div class="graph-img-container">
+          <!-- EMBEDDED HIGH-CONTRAST SVG GRAPH FALLBACK/STANDALONE -->
+          <svg viewBox="0 0 500 350" class="graph-svg" aria-hidden="true" style="width: 100%; height: auto; display: block; background: #ffffff;">
+            <!-- Grid Lines & Axes -->
+            <g stroke="#cbd5e1" stroke-width="1" stroke-dasharray="4 4">
+              <line x1="60" y1="280" x2="470" y2="280" />
+              <line x1="60" y1="220" x2="470" y2="220" />
+              <line x1="60" y1="160" x2="470" y2="160" />
+              <line x1="60" y1="100" x2="470" y2="100" />
+              <line x1="60" y1="40"  x2="470" y2="40" />
+            </g>
+
+            <!-- Main Axes Lines -->
+            <line x1="60" y1="35" x2="60" y2="285" stroke="#0f172a" stroke-width="2" />
+            <line x1="55" y1="285" x2="475" y2="285" stroke="#0f172a" stroke-width="2" />
+
+            <!-- Y-Axis Ticks & Labels (SI %) -->
+            <text x="45" y="288" text-anchor="end" font-size="12" fill="#0f172a" font-weight="600">5</text>
+            <text x="45" y="228" text-anchor="end" font-size="12" fill="#0f172a" font-weight="600">7</text>
+            <text x="45" y="168" text-anchor="end" font-size="12" fill="#0f172a" font-weight="600">9</text>
+            <text x="45" y="108" text-anchor="end" font-size="12" fill="#0f172a" font-weight="600">11</text>
+            <text x="45" y="48"  text-anchor="end" font-size="12" fill="#0f172a" font-weight="600">13</text>
+
+            <!-- Y-Axis Title -->
+            <text x="-160" y="20" transform="rotate(-90)" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Stomatal index (%)</text>
+
+            <!-- X-Axis Ticks & Labels (CO2 ppm) -->
+            <line x1="60" y1="285" x2="60" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="60" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">250</text>
+            
+            <line x1="128" y1="285" x2="128" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="128" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">350</text>
+
+            <line x1="196" y1="285" x2="196" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="196" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">450</text>
+
+            <line x1="264" y1="285" x2="264" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="264" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">550</text>
+
+            <line x1="332" y1="285" x2="332" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="332" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">650</text>
+
+            <line x1="400" y1="285" x2="400" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="400" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">750</text>
+
+            <line x1="468" y1="285" x2="468" y2="291" stroke="#0f172a" stroke-width="2" />
+            <text x="468" y="308" text-anchor="middle" font-size="12" fill="#0f172a" font-weight="600">850</text>
+
+            <!-- X-Axis Title -->
+            <text x="264" y="335" text-anchor="middle" font-size="13" font-weight="700" fill="#0f172a">Atmospheric CO₂ (ppm)</text>
+            <text x="450" y="30" text-anchor="middle" font-size="14" font-weight="800" fill="#0f172a">(b)</text>
+
+            <!-- Calibration Best Fit Curve Line -->
+            <path d="M 80,35 C 95,140 160,210 468,235" fill="none" stroke="#0f172a" stroke-width="2.5" />
+
+            <!-- Scatter Data Points from calibration dataset -->
+            <g fill="#0f172a">
+              <circle cx="80" cy="38" r="3" /><circle cx="82" cy="45" r="3" /><circle cx="85" cy="52" r="3" />
+              <circle cx="87" cy="58" r="3" /><circle cx="90" cy="65" r="3" /><circle cx="93" cy="72" r="3" />
+              <circle cx="97" cy="85" r="3" /><circle cx="102" cy="100" r="3" /><circle cx="110" cy="120" r="3" />
+              <circle cx="120" cy="145" r="3" /><circle cx="125" cy="160" r="3" /><circle cx="130" cy="170" r="3" />
+              <!-- Paleogene / Higher CO2 points -->
+              <circle cx="180" cy="195" r="4" fill="none" stroke="#0f172a" stroke-width="1.5" /><circle cx="180" cy="195" r="2" />
+              <circle cx="195" cy="210" r="4" fill="none" stroke="#0f172a" stroke-width="1.5" /><circle cx="195" cy="210" r="2" />
+              <circle cx="270" cy="210" r="4" fill="none" stroke="#0f172a" stroke-width="1.5" /><circle cx="270" cy="210" r="2" />
+              <circle cx="430" cy="228" r="4" fill="none" stroke="#0f172a" stroke-width="1.5" /><circle cx="430" cy="228" r="2" />
+              <circle cx="440" cy="232" r="4" fill="none" stroke="#0f172a" stroke-width="1.5" /><circle cx="440" cy="232" r="2" />
+            </g>
+          </svg>
+
+          <!-- IMAGE OVERLAY WITH AUTO FALLBACK -->
           <img 
             src="./images/stomatal index CO2 graph.png" 
             alt="Calibration curve graph showing Stomatal Index percentage on Y-axis (5% to 15%) versus Atmospheric CO2 parts per million on X-axis (250 to 850 ppm)." 
             class="graph-img" 
             id="graph-img"
+            style="position: absolute; top:0; left:0; opacity: 0.9; z-index: 2;"
             onerror="this.onerror=null; this.src='./stomatal index CO2 graph.png';"
           />
+
+          <!-- INTERACTIVE CURVE HANDLE INDICATOR -->
           <div id="curve-handle" class="curve-handle" role="slider" aria-label="Graph Curve Indicator" aria-valuemin="6.5" aria-valuemax="13.5" aria-valuenow="10.0" aria-valuetext="Stomatal Index: 10.0%, CO2: 345 ppm">
             <div id="handle-callout" class="handle-callout">SI: 10.0% | CO₂: 345 ppm</div>
           </div>
@@ -420,212 +493,4 @@
       </div>
 
       <div class="readout-grid">
-        <div class="readout-card">
-          <span class="title">Selected Stomatal Index (SI)</span>
-          <span class="value" id="readout-si">10.0%</span>
-        </div>
-        <div class="readout-card">
-          <span class="title">Estimated CO<sub>2</sub> Concentration</span>
-          <span class="value" id="readout-co2">345 ppm</span>
-        </div>
-      </div>
-    </main>
-
-    <section class="controls-panel" aria-labelledby="controls-heading">
-      <h2 id="controls-heading" class="sr-only">Graph Controls</h2>
-      
-      <div class="slider-group">
-        <div class="slider-header">
-          <label for="si-slider" class="slider-label">Move Curve Slider (Stomatal Index %)</label>
-          <span class="slider-val-badge" id="slider-val-display">10.0%</span>
-        </div>
-        <input 
-          type="range" 
-          id="si-slider" 
-          min="6.5" 
-          max="13.5" 
-          step="0.1" 
-          value="10.0" 
-          aria-describedby="slider-help"
-        />
-        <p id="slider-help" class="sr-only">Use left and right arrow keys to adjust Stomatal Index between 6.5% and 13.5%</p>
-      </div>
-
-      <div id="warning-banner" class="warning-banner" role="alert">
-        ⚠️ <strong>Data Limit:</strong> Stomatal Index values below 6.5% exceed the calibrated experimental dataset limit (Max ~850 ppm CO<sub>2</sub>). Estimates cannot be extrapolated beyond these data points.
-      </div>
-    </section>
-
-    <section class="lab-check-card" aria-labelledby="lab-check-heading">
-      <h2 id="lab-check-heading" style="font-size: 1.2rem; margin-bottom: var(--space-md);">🧪 Check Your Lab Calculations</h2>
-      <form id="lab-form">
-        <div class="form-row">
-          <div class="input-field">
-            <label for="input-user-si">Enter Calculated SI (%)</label>
-            <input type="number" id="input-user-si" min="5" max="15" step="0.1" placeholder="e.g. 9.5" required>
-          </div>
-          <button type="submit" class="btn">Calculate Estimated CO<sub>2</sub></button>
-        </div>
-      </form>
-      <div id="lab-result" style="margin-top: var(--space-md); font-weight: 600; display: none;"></div>
-    </section>
-
-  </div>
-
-  <div id="modal-instructions" class="modal-overlay" role="dialog" aria-labelledby="inst-title" aria-modal="true">
-    <div class="modal-content">
-      <h2 id="inst-title">Lab Instructions: Reading CO<sub>2</sub> Estimates</h2>
-      <p>Plants adjust their density of stomata (pores) relative to atmospheric CO<sub>2</sub> levels. This application maps the inverse relationship using paleoclimate calibration datasets.</p>
-      <ul style="margin-left: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem;">
-        <li><strong>Drag or Keyboard Slider:</strong> Move the slider along the curve to observe how CO<sub>2</sub> concentrations decrease as Stomatal Index increases.</li>
-        <li><strong>Data Capping:</strong> Estimates are strictly capped at 850 ppm CO<sub>2</sub> (corresponding to 6.5% SI) because experimental data points do not extend further.</li>
-        <li><strong>Check Lab Values:</strong> Type your calculated Stomatal Index percentage into the input box to directly read the estimated atmospheric CO<sub>2</sub> concentration for your lab report.</li>
-      </ul>
-      <button class="btn modal-close" style="align-self: flex-end;">Close Instructions</button>
-    </div>
-  </div>
-
-  <div id="modal-checklist" class="modal-overlay" role="dialog" aria-labelledby="check-title" aria-modal="true">
-    <div class="modal-content">
-      <h2 id="check-title">WCAG 2.2 Level AA Testing Checklist</h2>
-      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem;">
-        <thead>
-          <tr style="border-bottom: 2px solid var(--border-color);">
-            <th style="padding: 0.5rem;">Criteria</th>
-            <th style="padding: 0.5rem;">Description</th>
-            <th style="padding: 0.5rem;">Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="border-bottom: 1px solid var(--border-color);">
-            <td style="padding: 0.5rem;"><strong>2.1.1 Keyboard</strong></td>
-            <td style="padding: 0.5rem;">Full operability via Tab, Arrow Keys, and Space/Enter.</td>
-            <td style="padding: 0.5rem; color: green; font-weight: bold;">PASS</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-color);">
-            <td style="padding: 0.5rem;"><strong>2.4.7 Focus Visible</strong></td>
-            <td style="padding: 0.5rem;">3px solid focus ring on all interactive elements.</td>
-            <td style="padding: 0.5rem; color: green; font-weight: bold;">PASS</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border-color);">
-            <td style="padding: 0.5rem;"><strong>4.1.2 ARIA Live</strong></td>
-            <td style="padding: 0.5rem;">Dynamic announcements for screen reader updates.</td>
-            <td style="padding: 0.5rem; color: green; font-weight: bold;">PASS</td>
-          </tr>
-          <tr>
-            <td style="padding: 0.5rem;"><strong>1.4.3 Contrast</strong></td>
-            <td style="padding: 0.5rem;">All text meets minimum 4.5:1 ratio requirement.</td>
-            <td style="padding: 0.5rem; color: green; font-weight: bold;">PASS</td>
-          </tr>
-        </tbody>
-      </table>
-      <button class="btn modal-close" style="align-self: flex-end;">Close Checklist</button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const slider = document.getElementById('si-slider');
-      const sliderValDisplay = document.getElementById('slider-val-display');
-      const readoutSi = document.getElementById('readout-si');
-      const readoutCo2 = document.getElementById('readout-co2');
-      const warningBanner = document.getElementById('warning-banner');
-      const handle = document.getElementById('curve-handle');
-      const handleCallout = document.getElementById('handle-callout');
-      const srAnnouncer = document.getElementById('sr-announcer');
-      const labForm = document.getElementById('lab-form');
-      const inputUserSi = document.getElementById('input-user-si');
-      const labResult = document.getElementById('lab-result');
-
-      function calculateCO2(si) {
-        if (si <= 6.5) return 850;
-        if (si >= 13.5) return 280;
-        
-        const co2 = Math.round(280 + Math.pow((13.5 - si) / 7.0, 1.45) * (850 - 280));
-        return Math.min(850, Math.max(280, co2));
-      }
-
-      function getHandlePosition(si) {
-        const clampedSI = Math.min(13.5, Math.max(6.5, si));
-        const yPct = 85 - ((clampedSI - 6.5) / (13.5 - 6.5)) * 68;
-        const co2 = calculateCO2(clampedSI);
-        const xPct = 12 + ((co2 - 250) / (850 - 250)) * 76;
-
-        return { x: xPct, y: yPct };
-      }
-
-      function updateApp(siValue, announce = false) {
-        const si = parseFloat(siValue);
-        const co2 = calculateCO2(si);
-
-        sliderValDisplay.textContent = `${si.toFixed(1)}%`;
-        readoutSi.textContent = `${si.toFixed(1)}%`;
-        readoutCo2.textContent = `${co2} ppm`;
-
-        const pos = getHandlePosition(si);
-        handle.style.left = `${pos.x}%`;
-        handle.style.top = `${pos.y}%`;
-        handle.setAttribute('aria-valuenow', si.toFixed(1));
-        handle.setAttribute('aria-valuetext', `Stomatal Index: ${si.toFixed(1)}%, CO2: ${co2} ppm`);
-        handleCallout.textContent = `SI: ${si.toFixed(1)}% | CO₂: ${co2} ppm`;
-
-        if (si <= 6.5) {
-          warningBanner.style.display = 'block';
-        } else {
-          warningBanner.style.display = 'none';
-        }
-
-        if (announce) {
-          srAnnouncer.textContent = `Stomatal Index set to ${si.toFixed(1)} percent. Estimated atmospheric CO2 is ${co2} parts per million.`;
-        }
-      }
-
-      slider.addEventListener('input', (e) => {
-        updateApp(e.target.value, false);
-      });
-
-      slider.addEventListener('change', (e) => {
-        updateApp(e.target.value, true);
-      });
-
-      labForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const userSi = parseFloat(inputUserSi.value);
-        if (isNaN(userSi)) return;
-
-        const estimatedCo2 = calculateCO2(userSi);
-        labResult.style.display = 'block';
-
-        if (userSi < 6.5) {
-          labResult.innerHTML = `⚠️ For a Stomatal Index of <strong>${userSi.toFixed(1)}%</strong>, the estimated CO<sub>2</sub> reaches the maximum dataset calibration threshold of <strong>~850 ppm</strong>.`;
-        } else if (userSi > 13.5) {
-          labResult.innerHTML = `⚠️ For a Stomatal Index of <strong>${userSi.toFixed(1)}%</strong>, the estimated CO<sub>2</sub> drops below pre-industrial baselines (<strong>~280 ppm</strong>).`;
-        } else {
-          labResult.innerHTML = `✅ A Stomatal Index of <strong>${userSi.toFixed(1)}%</strong> corresponds to an estimated atmospheric CO<sub>2</sub> concentration of <strong>${estimatedCo2} ppm</strong>.`;
-        }
-
-        slider.value = Math.min(13.5, Math.max(6.5, userSi));
-        updateApp(slider.value, true);
-      });
-
-      const btnInstructions = document.getElementById('btn-instructions');
-      const btnChecklist = document.getElementById('btn-checklist');
-      const modalInstructions = document.getElementById('modal-instructions');
-      const modalChecklist = document.getElementById('modal-checklist');
-      const closeButtons = document.querySelectorAll('.modal-close');
-
-      btnInstructions.addEventListener('click', () => modalInstructions.classList.add('active'));
-      btnChecklist.addEventListener('click', () => modalChecklist.classList.add('active'));
-
-      closeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          modalInstructions.classList.remove('active');
-          modalChecklist.classList.remove('active');
-        });
-      });
-
-      updateApp(10.0, false);
-    });
-  </script>
-</body>
-</html>
+<!-- ... existing code -->
